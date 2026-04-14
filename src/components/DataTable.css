@@ -1,0 +1,242 @@
+/* ============================================================
+   components/DataTable.css
+   ============================================================ */
+
+/* Outer wrapper */
+.dt-wrapper {
+  background: #ffffff;
+  border: 1px solid #e8e8e8;
+  border-radius: 10px;
+  overflow: hidden;
+  margin-bottom: 1.5rem;
+}
+
+/* ── Header ── */
+.dt-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  padding: 0.875rem 1.25rem;
+  border-bottom: 1px solid #e8e8e8;
+  background: #fafafa;
+}
+
+.dt-header-left {
+  display: flex;
+  align-items: baseline;
+  gap: 0.625rem;
+}
+
+.dt-title {
+  font-size: 14.5px;
+  font-weight: 600;
+  color: #1a1a1a;
+  margin: 0;
+}
+
+.dt-count {
+  font-size: 12px;
+  color: #aaa;
+}
+
+.dt-header-right {
+  display: flex;
+  align-items: center;
+  gap: 0.625rem;
+  flex-wrap: wrap;
+}
+
+/* ── Search ── */
+.dt-search-wrap {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.dt-search-icon {
+  position: absolute;
+  left: 8px;
+  font-size: 13px;
+  pointer-events: none;
+}
+
+.dt-search {
+  padding: 6px 28px 6px 28px;
+  font-size: 13px;
+  border: 1px solid #ddd;
+  border-radius: 6px;
+  background: #fff;
+  color: #1a1a1a;
+  outline: none;
+  min-width: 180px;
+  transition: border-color 0.15s;
+}
+
+.dt-search:focus {
+  border-color: #c0392b;
+}
+
+.dt-clear-btn {
+  position: absolute;
+  right: 8px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-size: 15px;
+  color: #aaa;
+  line-height: 1;
+  padding: 0;
+}
+
+.dt-clear-btn:hover {
+  color: #333;
+}
+
+/* ── Scroll container ── */
+.dt-scroll {
+  overflow-x: auto;
+}
+
+/* ── States (loading / empty / error) ── */
+.dt-state {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 0.75rem;
+  padding: 3rem 1rem;
+  color: #999;
+  font-size: 14px;
+}
+
+.dt-state--error {
+  color: #b71c1c;
+}
+
+.dt-spinner {
+  width: 28px;
+  height: 28px;
+  border: 3px solid #eee;
+  border-top-color: #c0392b;
+  border-radius: 50%;
+  animation: dt-spin 0.7s linear infinite;
+}
+
+@keyframes dt-spin {
+  to { transform: rotate(360deg); }
+}
+
+/* ── Table ── */
+.dt-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 13.5px;
+}
+
+.dt-table th {
+  text-align: left;
+  padding: 9px 1.25rem;
+  font-size: 11px;
+  font-weight: 700;
+  color: #777;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+  border-bottom: 1px solid #e8e8e8;
+  background: #fafafa;
+  white-space: nowrap;
+}
+
+.dt-table td {
+  padding: 10px 1.25rem;
+  border-bottom: 1px solid #f0f0f0;
+  color: #333;
+  vertical-align: middle;
+}
+
+.dt-table tbody tr:last-child td {
+  border-bottom: none;
+}
+
+.dt-table tbody tr:hover td {
+  background: #fafafa;
+}
+
+/* ── Actions column ── */
+.dt-col-actions {
+  width: 120px;
+  white-space: nowrap;
+}
+
+.dt-actions {
+  display: flex;
+  gap: 6px;
+}
+
+/* ── Shared button styles ── */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 4px;
+  padding: 7px 16px;
+  font-size: 13px;
+  font-weight: 500;
+  border-radius: 6px;
+  border: 1px solid transparent;
+  cursor: pointer;
+  text-decoration: none;
+  transition: background 0.15s, border-color 0.15s, color 0.15s;
+  white-space: nowrap;
+  font-family: inherit;
+}
+
+.btn--primary {
+  background: #c0392b;
+  color: #fff;
+  border-color: #c0392b;
+}
+.btn--primary:hover {
+  background: #a93226;
+  border-color: #a93226;
+}
+
+.btn--outline {
+  background: #fff;
+  color: #333;
+  border-color: #ddd;
+}
+.btn--outline:hover {
+  background: #f4f4f4;
+  border-color: #bbb;
+}
+
+.btn--danger {
+  background: #fff;
+  color: #b71c1c;
+  border-color: #f5c6c6;
+}
+.btn--danger:hover {
+  background: #fdecea;
+  border-color: #e57373;
+}
+
+.btn--secondary {
+  background: #f4f4f4;
+  color: #333;
+  border-color: #ddd;
+}
+.btn--secondary:hover {
+  background: #e8e8e8;
+}
+
+.btn--sm {
+  padding: 4px 10px;
+  font-size: 12px;
+}
+
+.btn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}

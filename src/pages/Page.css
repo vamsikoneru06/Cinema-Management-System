@@ -1,0 +1,122 @@
+/* ============================================================
+   pages/Page.css
+   Shared styles for all pages:
+     - .page wrapper
+     - .page-header / .page-title
+     - .alert
+     - .toast
+   Import this in every page that doesn't already extend
+   Dashboard.css (which already defines these).
+   ============================================================ */
+
+.page {
+  padding: 1.5rem;
+  max-width: 1160px;
+  margin: 0 auto;
+}
+
+.page-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 1.5rem;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+.page-title {
+  font-size: 22px;
+  font-weight: 700;
+  color: #1a1a1a;
+  margin: 0;
+  font-family: "Georgia", serif;
+}
+
+/* ── Alerts ── */
+.alert {
+  border-radius: 7px;
+  padding: 0.75rem 1rem;
+  font-size: 13.5px;
+  margin-bottom: 1.25rem;
+  line-height: 1.5;
+}
+.alert--error {
+  background: #fdecea;
+  color: #b71c1c;
+  border: 1px solid #f5c6c6;
+}
+.alert--success {
+  background: #eaf7ee;
+  color: #217a3c;
+  border: 1px solid #b2dfdb;
+}
+
+/* ── Toast notifications ── */
+.toast {
+  position: fixed;
+  bottom: 1.5rem;
+  right: 1.5rem;
+  padding: 0.75rem 1.25rem;
+  border-radius: 8px;
+  font-size: 13.5px;
+  font-weight: 500;
+  z-index: 999;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.12);
+  animation: toast-in 0.2s ease;
+  max-width: 340px;
+  line-height: 1.4;
+}
+
+@keyframes toast-in {
+  from { opacity: 0; transform: translateY(8px); }
+  to   { opacity: 1; transform: translateY(0);   }
+}
+
+.toast--success {
+  background: #217a3c;
+  color: #fff;
+}
+.toast--error {
+  background: #b71c1c;
+  color: #fff;
+}
+.toast--info {
+  background: #1565c0;
+  color: #fff;
+}
+
+/* ── Filter bar (used in Bookings / ShowTimes) ── */
+.filter-bar {
+  display: flex;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+  margin-bottom: 1.25rem;
+}
+
+.filter-btn {
+  padding: 5px 14px;
+  font-size: 12.5px;
+  font-weight: 500;
+  border: 1px solid #ddd;
+  border-radius: 20px;
+  background: #fff;
+  color: #555;
+  cursor: pointer;
+  transition: background 0.15s, border-color 0.15s, color 0.15s;
+  font-family: inherit;
+}
+
+.filter-btn:hover {
+  background: #f4f4f4;
+}
+
+.filter-btn--active {
+  background: #c0392b;
+  color: #fff;
+  border-color: #c0392b;
+}
+
+/* ── Responsive ── */
+@media (max-width: 640px) {
+  .page { padding: 1rem; }
+}

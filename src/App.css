@@ -1,0 +1,158 @@
+/* ============================================================
+   App.css  —  Global styles, CSS reset, design tokens
+   All component/page CSS files import on top of this base.
+   ============================================================ */
+
+/* ── Google Font ── */
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap");
+
+/* ── CSS custom properties (design tokens) ── */
+:root {
+  /* Palette */
+  --color-primary:       #c0392b;
+  --color-primary-dark:  #a93226;
+  --color-primary-light: #fdecea;
+
+  --color-success:       #27ae60;
+  --color-success-bg:    #eaf7ee;
+  --color-warning:       #f39c12;
+  --color-warning-bg:    #fff8e1;
+  --color-danger:        #e74c3c;
+  --color-danger-bg:     #fdecea;
+  --color-info:          #2980b9;
+  --color-info-bg:       #e3f2fd;
+
+  /* Neutrals */
+  --color-text-primary:   #1a1a1a;
+  --color-text-secondary: #555555;
+  --color-text-muted:     #999999;
+  --color-border:         #e8e8e8;
+  --color-bg:             #f5f5f5;
+  --color-surface:        #ffffff;
+
+  /* Typography */
+  --font-sans:   "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  --font-serif:  "Georgia", "Times New Roman", serif;
+  --font-mono:   "SFMono-Regular", "Consolas", "Liberation Mono", monospace;
+
+  /* Spacing */
+  --radius-sm: 4px;
+  --radius-md: 7px;
+  --radius-lg: 10px;
+
+  /* Shadows */
+  --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.07);
+  --shadow-md: 0 2px 10px rgba(0, 0, 0, 0.09);
+  --shadow-lg: 0 6px 24px rgba(0, 0, 0, 0.11);
+}
+
+/* ── CSS Reset ── */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  font-size: 16px;
+  -webkit-text-size-adjust: 100%;
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: var(--font-sans);
+  background-color: var(--color-bg);
+  color: var(--color-text-primary);
+  line-height: 1.6;
+  min-height: 100vh;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+img,
+video {
+  max-width: 100%;
+  display: block;
+}
+
+button,
+input,
+select,
+textarea {
+  font-family: inherit;
+  font-size: inherit;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+ul,
+ol {
+  list-style: none;
+}
+
+/* ── App layout ── */
+.app-main {
+  min-height: calc(100vh - 56px - 44px); /* viewport - navbar - footer */
+  padding-bottom: 2rem;
+}
+
+/* ── Footer ── */
+.app-footer {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  padding: 0.75rem 1rem;
+  font-size: 12px;
+  color: var(--color-text-muted);
+  border-top: 1px solid var(--color-border);
+  background: var(--color-surface);
+  flex-wrap: wrap;
+}
+
+.app-footer-sep {
+  opacity: 0.4;
+}
+
+.app-footer code {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  background: #eee;
+  padding: 1px 5px;
+  border-radius: 3px;
+  color: var(--color-text-secondary);
+}
+
+/* ── Scrollbar (webkit) ── */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+::-webkit-scrollbar-thumb {
+  background: #ccc;
+  border-radius: 3px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #aaa;
+}
+
+/* ── Utility helpers ── */
+.text-muted    { color: var(--color-text-muted); }
+.text-primary  { color: var(--color-primary); }
+.text-success  { color: var(--color-success); }
+.text-danger   { color: var(--color-danger); }
+.fw-500        { font-weight: 500; }
+.fw-600        { font-weight: 600; }
+.fw-700        { font-weight: 700; }
+.mt-1          { margin-top: 0.5rem; }
+.mt-2          { margin-top: 1rem; }
+.mb-1          { margin-bottom: 0.5rem; }
+.mb-2          { margin-bottom: 1rem; }
