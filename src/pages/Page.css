@@ -1,122 +1,146 @@
 /* ============================================================
-   pages/Page.css
-   Shared styles for all pages:
-     - .page wrapper
-     - .page-header / .page-title
-     - .alert
-     - .toast
-   Import this in every page that doesn't already extend
-   Dashboard.css (which already defines these).
+   Page.css — Shared page shell, alerts, toasts, filter bar
    ============================================================ */
 
 .page {
-  padding: 1.5rem;
-  max-width: 1160px;
+  padding: 1.75rem 2rem;
+  max-width: 1220px;
   margin: 0 auto;
 }
 
+/* ── Page header ──────────────────────────────────────────── */
 .page-header {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  margin-bottom: 1.5rem;
+  margin-bottom: 1.75rem;
   gap: 1rem;
   flex-wrap: wrap;
 }
 
 .page-title {
-  font-size: 22px;
+  font-size: 24px;
   font-weight: 700;
-  color: #1a1a1a;
+  color: #f0f0f8;
   margin: 0;
-  font-family: "Georgia", serif;
+  font-family: "Outfit", "Inter", sans-serif;
+  letter-spacing: -0.3px;
 }
 
-/* ── Alerts ── */
+.page-title-sub {
+  font-size: 13px;
+  color: rgba(255,255,255,0.3);
+  font-weight: 400;
+  margin-top: 2px;
+}
+
+/* ── Alerts ───────────────────────────────────────────────── */
 .alert {
-  border-radius: 7px;
-  padding: 0.75rem 1rem;
+  border-radius: 10px;
+  padding: 0.875rem 1.125rem;
   font-size: 13.5px;
   margin-bottom: 1.25rem;
   line-height: 1.5;
-}
-.alert--error {
-  background: #fdecea;
-  color: #b71c1c;
-  border: 1px solid #f5c6c6;
-}
-.alert--success {
-  background: #eaf7ee;
-  color: #217a3c;
-  border: 1px solid #b2dfdb;
+  display: flex;
+  align-items: flex-start;
+  gap: 0.625rem;
 }
 
-/* ── Toast notifications ── */
+.alert--error {
+  background: rgba(230, 57, 70, 0.1);
+  color: #ff6b6b;
+  border: 1px solid rgba(230, 57, 70, 0.25);
+}
+
+.alert--success {
+  background: rgba(45, 212, 191, 0.1);
+  color: #2dd4bf;
+  border: 1px solid rgba(45, 212, 191, 0.25);
+}
+
+.alert--info {
+  background: rgba(96, 165, 250, 0.1);
+  color: #60a5fa;
+  border: 1px solid rgba(96, 165, 250, 0.25);
+}
+
+/* ── Toast notifications ──────────────────────────────────── */
 .toast {
   position: fixed;
-  bottom: 1.5rem;
-  right: 1.5rem;
-  padding: 0.75rem 1.25rem;
-  border-radius: 8px;
+  bottom: 1.75rem;
+  right: 1.75rem;
+  padding: 0.875rem 1.375rem;
+  border-radius: 12px;
   font-size: 13.5px;
   font-weight: 500;
-  z-index: 999;
-  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.12);
-  animation: toast-in 0.2s ease;
-  max-width: 340px;
-  line-height: 1.4;
+  z-index: 9999;
+  box-shadow: 0 8px 32px rgba(0,0,0,0.6);
+  animation: toast-in 0.22s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  max-width: 360px;
+  line-height: 1.45;
+  backdrop-filter: blur(10px);
+  display: flex;
+  align-items: center;
+  gap: 0.625rem;
 }
 
 @keyframes toast-in {
-  from { opacity: 0; transform: translateY(8px); }
-  to   { opacity: 1; transform: translateY(0);   }
+  from { opacity: 0; transform: translateY(12px) scale(0.95); }
+  to   { opacity: 1; transform: translateY(0)    scale(1); }
 }
 
 .toast--success {
-  background: #217a3c;
-  color: #fff;
-}
-.toast--error {
-  background: #b71c1c;
-  color: #fff;
-}
-.toast--info {
-  background: #1565c0;
-  color: #fff;
+  background: rgba(30, 30, 42, 0.96);
+  color: #2dd4bf;
+  border: 1px solid rgba(45, 212, 191, 0.3);
 }
 
-/* ── Filter bar (used in Bookings / ShowTimes) ── */
+.toast--error {
+  background: rgba(30, 30, 42, 0.96);
+  color: #ff6b6b;
+  border: 1px solid rgba(230, 57, 70, 0.3);
+}
+
+.toast--info {
+  background: rgba(30, 30, 42, 0.96);
+  color: #60a5fa;
+  border: 1px solid rgba(96, 165, 250, 0.3);
+}
+
+/* ── Filter bar ───────────────────────────────────────────── */
 .filter-bar {
   display: flex;
   gap: 0.5rem;
   flex-wrap: wrap;
-  margin-bottom: 1.25rem;
+  margin-bottom: 1.375rem;
 }
 
 .filter-btn {
-  padding: 5px 14px;
+  padding: 6px 16px;
   font-size: 12.5px;
   font-weight: 500;
-  border: 1px solid #ddd;
+  border: 1px solid rgba(255,255,255,0.1);
   border-radius: 20px;
-  background: #fff;
-  color: #555;
+  background: rgba(255,255,255,0.05);
+  color: rgba(255,255,255,0.45);
   cursor: pointer;
-  transition: background 0.15s, border-color 0.15s, color 0.15s;
+  transition: all 0.15s ease;
   font-family: inherit;
 }
 
 .filter-btn:hover {
-  background: #f4f4f4;
+  background: rgba(255,255,255,0.1);
+  color: rgba(255,255,255,0.8);
+  border-color: rgba(255,255,255,0.2);
 }
 
 .filter-btn--active {
-  background: #c0392b;
-  color: #fff;
-  border-color: #c0392b;
+  background: rgba(230, 57, 70, 0.18);
+  color: #e63946;
+  border-color: rgba(230, 57, 70, 0.4);
 }
 
-/* ── Responsive ── */
+/* ── Responsive ───────────────────────────────────────────── */
 @media (max-width: 640px) {
-  .page { padding: 1rem; }
+  .page { padding: 1.25rem 1rem; }
 }

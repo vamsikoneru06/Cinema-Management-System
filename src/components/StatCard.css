@@ -1,55 +1,138 @@
 /* ============================================================
-   components/StatCard.css
+   StatCard.css — Glowing KPI cards for the dashboard
    ============================================================ */
 
 .stat-card {
+  position: relative;
+  overflow: hidden;
   display: flex;
   align-items: flex-start;
-  gap: 0.875rem;
-  background: #ffffff;
-  border: 1px solid #e8e8e8;
-  border-left: 4px solid var(--stat-accent, #c0392b);
-  border-radius: 8px;
-  padding: 1rem 1.25rem;
-  transition: box-shadow 0.15s;
+  gap: 1rem;
+  background: var(--c-surface, #16161f);
+  border: 1px solid rgba(255,255,255,0.07);
+  border-radius: 14px;
+  padding: 1.25rem 1.375rem;
+  transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
+  cursor: default;
+}
+
+.stat-card::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(135deg,
+    rgba(var(--stat-rgb, 192,57,43), 0.06) 0%,
+    transparent 60%);
+  pointer-events: none;
 }
 
 .stat-card:hover {
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+  transform: translateY(-3px);
+  border-color: rgba(var(--stat-rgb, 192,57,43), 0.3);
+  box-shadow:
+    0 8px 32px rgba(0,0,0,0.5),
+    0 0 0 1px rgba(var(--stat-rgb, 192,57,43), 0.15);
 }
 
+/* ── Icon bubble ──────────────────────────────────────────── */
 .stat-card__icon {
-  font-size: 22px;
-  line-height: 1;
-  margin-top: 2px;
+  width: 44px;
+  height: 44px;
+  border-radius: 11px;
+  background: rgba(var(--stat-rgb, 192,57,43), 0.15);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 21px;
   flex-shrink: 0;
+  line-height: 1;
 }
 
+/* ── Body ─────────────────────────────────────────────────── */
 .stat-card__body {
   display: flex;
   flex-direction: column;
-  gap: 2px;
+  gap: 3px;
+  min-width: 0;
 }
 
 .stat-card__label {
-  font-size: 11.5px;
+  font-size: 11px;
   font-weight: 600;
-  color: #888;
-  letter-spacing: 0.5px;
+  color: rgba(255,255,255,0.4);
+  letter-spacing: 0.8px;
   text-transform: uppercase;
   margin: 0;
+  white-space: nowrap;
 }
 
 .stat-card__value {
   font-size: 26px;
   font-weight: 700;
-  color: #1a1a1a;
+  color: #f0f0f8;
   line-height: 1.15;
   margin: 0;
+  font-family: "Outfit", "Inter", sans-serif;
+  letter-spacing: -0.5px;
+}
+
+.stat-card__value--live {
+  color: #ffd166;
+  animation: value-pulse 0.6s ease;
+}
+
+@keyframes value-pulse {
+  0%   { opacity: 0.5; transform: scale(0.97); }
+  100% { opacity: 1;   transform: scale(1); }
 }
 
 .stat-card__sub {
-  font-size: 12px;
-  color: #aaa;
+  font-size: 11.5px;
+  color: rgba(255,255,255,0.3);
   margin: 0;
 }
+
+/* ── Live indicator ───────────────────────────────────────── */
+.stat-card__live {
+  position: absolute;
+  top: 10px;
+  right: 12px;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  font-size: 10px;
+  font-weight: 600;
+  color: #2dd4bf;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+}
+
+.stat-card__live-dot {
+  width: 5px;
+  height: 5px;
+  background: #2dd4bf;
+  border-radius: 50%;
+  animation: pulse-dot 1.5s ease-in-out infinite;
+}
+
+@keyframes pulse-dot {
+  0%, 100% { opacity: 1; }
+  50%       { opacity: 0.3; }
+}
+
+/* ── Accent bar at bottom ─────────────────────────────────── */
+.stat-card::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: linear-gradient(90deg,
+    rgba(var(--stat-rgb, 192,57,43), 0.8),
+    rgba(var(--stat-rgb, 192,57,43), 0.1));
+  opacity: 0;
+  transition: opacity 0.2s;
+}
+
+.stat-card:hover::after { opacity: 1; }

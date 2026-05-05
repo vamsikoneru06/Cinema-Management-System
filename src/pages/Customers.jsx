@@ -29,10 +29,12 @@ const COLUMNS = [
     render: (v, row) => (
       <div style={{ display: "flex", alignItems: "center", gap: 10 }}>
         <div style={{
-          width: 30, height: 30, borderRadius: "50%",
-          background: "#fdecea", color: "#c0392b",
+          width: 32, height: 32, borderRadius: "50%",
+          background: "rgba(230, 57, 70, 0.15)",
+          border: "1px solid rgba(230, 57, 70, 0.3)",
+          color: "#e63946",
           display: "flex", alignItems: "center", justifyContent: "center",
-          fontSize: 12, fontWeight: 700, flexShrink: 0,
+          fontSize: 11, fontWeight: 700, flexShrink: 0,
         }}>
           {(v || "?").split(" ").map((w) => w[0]).join("").slice(0, 2).toUpperCase()}
         </div>

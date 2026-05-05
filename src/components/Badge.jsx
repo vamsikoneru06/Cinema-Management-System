@@ -53,11 +53,17 @@ export function bookingStatusBadge(status) {
 
 export function genreBadge(genre) {
   const map = {
-    action:   "danger",
-    drama:    "info",
-    masala:   "orange",
-    thriller: "purple",
-    comedy:   "success",
+    action:     "danger",
+    drama:      "info",
+    masala:     "orange",
+    thriller:   "purple",
+    comedy:     "success",
+    biography:  "info",
+    romance:    "orange",
+    horror:     "danger",
+    sports:     "success",
+    crime:      "purple",
+    historical: "warning",
   };
   return <Badge text={genre} variant={map[genre?.toLowerCase()] || "default"} />;
 }

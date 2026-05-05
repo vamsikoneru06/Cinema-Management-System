@@ -87,8 +87,8 @@ export default function Bookings() {
 
       <div className="page-header">
         <h1 className="page-title">Bookings</h1>
-        <span style={{ fontSize: 14, color: "#555" }}>
-          Revenue: <strong>₹{paidTotal.toLocaleString("en-IN")}</strong>
+        <span style={{ fontSize: 14, color: "rgba(255,255,255,0.45)" }}>
+          Revenue: <strong style={{ color: "#ffd166" }}>₹{paidTotal.toLocaleString("en-IN")}</strong>
         </span>
       </div>
 

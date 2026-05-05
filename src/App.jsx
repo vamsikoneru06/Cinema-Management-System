@@ -37,11 +37,13 @@ export default function App() {
 
       {/* ── Footer ── */}
       <footer className="app-footer">
-        <span>Cinema Management System</span>
+        <span>🎬 Cinema Management System</span>
         <span className="app-footer-sep">·</span>
         <span>21CSC205P — SRM IST Kattankulathur</span>
         <span className="app-footer-sep">·</span>
-        <span>API: <code>http://localhost:5000/api</code></span>
+        <span>K Mohan Vamsi &amp; A Teja Rayal</span>
+        <span className="app-footer-sep">·</span>
+        <span>API <code>localhost:5000</code></span>
       </footer>
     </BrowserRouter>
   );

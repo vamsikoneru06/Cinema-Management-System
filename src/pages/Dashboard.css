@@ -1,11 +1,11 @@
 /* ============================================================
-   pages/Dashboard.css
+   Dashboard.css — Premium cinema dashboard
    ============================================================ */
 
-/* ── Shared page shell (imported by all pages) ── */
+/* ── Page shell (shared across all pages via Dashboard.css) ── */
 .page {
-  padding: 1.5rem;
-  max-width: 1160px;
+  padding: 1.75rem 2rem;
+  max-width: 1220px;
   margin: 0 auto;
 }
 
@@ -13,90 +13,203 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-  margin-bottom: 1.5rem;
+  margin-bottom: 1.75rem;
   gap: 1rem;
   flex-wrap: wrap;
 }
 
 .page-title {
-  font-size: 22px;
+  font-size: 24px;
   font-weight: 700;
-  color: #1a1a1a;
+  color: #f0f0f8;
   margin: 0;
-  font-family: "Georgia", serif;
+  font-family: "Outfit", "Inter", sans-serif;
+  letter-spacing: -0.3px;
 }
 
-/* ── Alerts ── */
-.alert {
-  border-radius: 7px;
-  padding: 0.75rem 1rem;
-  font-size: 13.5px;
-  margin-bottom: 1.25rem;
-}
-.alert--error {
-  background: #fdecea;
-  color: #b71c1c;
-  border: 1px solid #f5c6c6;
-}
-.alert--success {
-  background: #eaf7ee;
-  color: #217a3c;
-  border: 1px solid #b2dfdb;
+/* ── Alerts ──────────────────────────────────────────────── */
+.alert { border-radius: 10px; padding: 0.875rem 1.125rem; font-size: 13.5px; margin-bottom: 1.25rem; }
+.alert--error   { background: rgba(230,57,70,.1); color: #ff6b6b; border: 1px solid rgba(230,57,70,.25); }
+.alert--success { background: rgba(45,212,191,.1); color: #2dd4bf; border: 1px solid rgba(45,212,191,.25); }
+
+/* ── Hero revenue card ───────────────────────────────────── */
+.dash-hero {
+  background: linear-gradient(135deg,
+    rgba(230, 57, 70, 0.18) 0%,
+    rgba(14, 14, 20, 0) 60%),
+    var(--c-surface, #16161f);
+  border: 1px solid rgba(230, 57, 70, 0.2);
+  border-radius: 18px;
+  padding: 2rem 2.5rem;
+  margin-bottom: 1.75rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1.5rem;
+  flex-wrap: wrap;
+  position: relative;
+  overflow: hidden;
 }
 
-/* ── Stat cards grid ── */
+.dash-hero::before {
+  content: "₹";
+  position: absolute;
+  right: 2rem;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 120px;
+  font-weight: 900;
+  color: rgba(230, 57, 70, 0.06);
+  font-family: "Outfit", sans-serif;
+  line-height: 1;
+  pointer-events: none;
+}
+
+.dash-hero-label {
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  color: rgba(255,255,255,0.35);
+  margin-bottom: 0.5rem;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.dash-hero-revenue {
+  font-size: 48px;
+  font-weight: 800;
+  font-family: "Outfit", "Inter", sans-serif;
+  letter-spacing: -1.5px;
+  line-height: 1;
+  background: linear-gradient(135deg, #ffd166, #fb923c);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  transition: all 0.4s ease;
+}
+
+.dash-hero-revenue--updated {
+  animation: revenue-flash 0.6s ease;
+}
+
+@keyframes revenue-flash {
+  0%   { filter: brightness(1); }
+  30%  { filter: brightness(1.6); }
+  100% { filter: brightness(1); }
+}
+
+.dash-hero-sub {
+  font-size: 13px;
+  color: rgba(255,255,255,0.3);
+  margin-top: 0.375rem;
+}
+
+.dash-hero-meta {
+  display: flex;
+  flex-direction: column;
+  gap: 0.375rem;
+  text-align: right;
+}
+
+.dash-hero-stat {
+  font-size: 13px;
+  color: rgba(255,255,255,0.45);
+}
+
+.dash-hero-stat strong { color: rgba(255,255,255,0.8); margin-left: 4px; }
+
+.dash-live-indicator {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  background: rgba(45,212,191,0.12);
+  border: 1px solid rgba(45,212,191,0.25);
+  color: #2dd4bf;
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.8px;
+  text-transform: uppercase;
+  padding: 3px 10px;
+  border-radius: 20px;
+}
+
+.dash-live-dot {
+  width: 6px;
+  height: 6px;
+  background: #2dd4bf;
+  border-radius: 50%;
+  animation: live-pulse 1.4s ease-in-out infinite;
+}
+
+@keyframes live-pulse {
+  0%, 100% { opacity: 1; transform: scale(1); }
+  50%       { opacity: 0.3; transform: scale(0.6); }
+}
+
+/* ── KPI grid ────────────────────────────────────────────── */
 .dash-stats {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(190px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
   gap: 1rem;
   margin-bottom: 1.75rem;
 }
 
-/* ── Dashboard section ── */
-.dash-section {
-  background: #fff;
-  border: 1px solid #e8e8e8;
-  border-radius: 10px;
-  padding: 1.25rem;
+/* ── Two-column lower section ────────────────────────────── */
+.dash-lower {
+  display: grid;
+  grid-template-columns: 1.4fr 1fr;
+  gap: 1.25rem;
   margin-bottom: 1.5rem;
+}
+
+/* ── Generic section card ────────────────────────────────── */
+.dash-section {
+  background: var(--c-surface, #16161f);
+  border: 1px solid rgba(255,255,255,0.07);
+  border-radius: 14px;
+  padding: 1.375rem;
 }
 
 .dash-section-header {
   display: flex;
-  align-items: baseline;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 1.25rem;
   gap: 0.75rem;
-  margin-bottom: 1rem;
 }
 
 .dash-section-title {
   font-size: 15px;
   font-weight: 600;
-  color: #1a1a1a;
+  color: #f0f0f8;
   margin: 0;
+  font-family: "Outfit", "Inter", sans-serif;
 }
 
 .dash-section-sub {
-  font-size: 12px;
-  color: #aaa;
+  font-size: 11.5px;
+  color: rgba(255,255,255,0.3);
 }
 
-/* ── Bar chart ── */
+/* ── Bar chart ───────────────────────────────────────────── */
 .dash-chart {
   display: flex;
   flex-direction: column;
-  gap: 10px;
+  gap: 12px;
 }
 
 .dash-bar-row {
   display: flex;
   align-items: center;
-  gap: 0.75rem;
+  gap: 0.875rem;
 }
 
 .dash-bar-label {
-  font-size: 13px;
-  color: #444;
-  width: 160px;
+  font-size: 12.5px;
+  color: rgba(255,255,255,0.55);
+  width: 155px;
   flex-shrink: 0;
   white-space: nowrap;
   overflow: hidden;
@@ -106,57 +219,159 @@
 
 .dash-bar-track {
   flex: 1;
-  height: 10px;
-  background: #f0f0f0;
-  border-radius: 5px;
+  height: 8px;
+  background: rgba(255,255,255,0.07);
+  border-radius: 4px;
   overflow: hidden;
 }
 
 .dash-bar-fill {
-  height: 10px;
-  background: #c0392b;
-  border-radius: 5px;
-  transition: width 0.5s ease;
+  height: 8px;
+  background: linear-gradient(90deg, #e63946, #ff6b6b);
+  border-radius: 4px;
+  transition: width 0.7s cubic-bezier(0.25, 1, 0.5, 1);
+  box-shadow: 0 0 8px rgba(230,57,70,0.4);
 }
 
 .dash-bar-val {
   font-size: 13px;
   font-weight: 600;
-  color: #555;
-  min-width: 36px;
+  color: rgba(255,255,255,0.6);
+  min-width: 38px;
   text-align: right;
+  font-family: "Outfit", sans-serif;
 }
 
-/* ── Loading / empty ── */
+/* ── Revenue trend (mini line chart placeholder) ─────────── */
+.dash-trend {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.dash-trend-row {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.dash-trend-day {
+  font-size: 11.5px;
+  color: rgba(255,255,255,0.35);
+  width: 70px;
+  flex-shrink: 0;
+}
+
+.dash-trend-bar-track {
+  flex: 1;
+  height: 6px;
+  background: rgba(255,255,255,0.05);
+  border-radius: 3px;
+  overflow: hidden;
+}
+
+.dash-trend-bar-fill {
+  height: 6px;
+  background: linear-gradient(90deg, #60a5fa, #818cf8);
+  border-radius: 3px;
+  transition: width 0.6s ease;
+}
+
+.dash-trend-amt {
+  font-size: 12px;
+  color: rgba(255,255,255,0.5);
+  min-width: 64px;
+  text-align: right;
+  font-family: "Outfit", sans-serif;
+}
+
+/* ── Loading / empty ──────────────────────────────────────── */
 .dash-loading,
 .dash-empty {
-  padding: 2rem 1rem;
+  padding: 2.5rem 1rem;
   text-align: center;
-  color: #aaa;
+  color: rgba(255,255,255,0.2);
   font-size: 14px;
 }
 
-/* ── Info banner ── */
+/* ── Info banner ──────────────────────────────────────────── */
 .dash-info {
-  background: #f8f9fa;
-  border: 1px solid #e8e8e8;
-  border-left: 4px solid #2980b9;
-  border-radius: 7px;
-  padding: 0.875rem 1rem;
-  font-size: 13.5px;
-  color: #555;
+  background: rgba(96, 165, 250, 0.08);
+  border: 1px solid rgba(96, 165, 250, 0.15);
+  border-radius: 10px;
+  padding: 0.875rem 1.125rem;
+  font-size: 13px;
+  color: rgba(255,255,255,0.4);
   line-height: 1.6;
 }
 
 .dash-info code {
-  background: #e8e8e8;
-  padding: 1px 5px;
-  border-radius: 3px;
-  font-size: 12.5px;
-  color: #1a1a1a;
+  background: rgba(255,255,255,0.08);
+  padding: 1px 6px;
+  border-radius: 4px;
+  font-size: 12px;
+  color: #ffd166;
+  font-family: "SFMono-Regular", "Consolas", monospace;
+}
+
+/* ── Stat pills row ───────────────────────────────────────── */
+.dash-pills {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.dash-pill {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 10px 14px;
+  background: rgba(255,255,255,0.03);
+  border: 1px solid rgba(255,255,255,0.06);
+  border-radius: 10px;
+  gap: 0.75rem;
+  transition: background 0.15s;
+}
+
+.dash-pill:hover { background: rgba(255,255,255,0.05); }
+
+.dash-pill-left {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.dash-pill-icon {
+  font-size: 18px;
+  width: 34px;
+  height: 34px;
+  background: rgba(255,255,255,0.06);
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.dash-pill-label {
+  font-size: 13px;
+  color: rgba(255,255,255,0.55);
+}
+
+.dash-pill-value {
+  font-size: 18px;
+  font-weight: 700;
+  color: #f0f0f8;
+  font-family: "Outfit", sans-serif;
+}
+
+/* ── Responsive ───────────────────────────────────────────── */
+@media (max-width: 900px) {
+  .dash-lower { grid-template-columns: 1fr; }
 }
 
 @media (max-width: 640px) {
-  .page { padding: 1rem; }
+  .page { padding: 1.25rem 1rem; }
+  .dash-hero { padding: 1.5rem; }
+  .dash-hero-revenue { font-size: 36px; }
   .dash-bar-label { width: 100px; }
 }

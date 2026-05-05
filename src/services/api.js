@@ -84,7 +84,8 @@ export const staffApi     = createEndpoint("staff");
 //  Dashboard – single aggregated endpoint
 // ============================================================
 export const dashboardApi = {
-  getStats: () => api.get("/dashboard/stats").then((r) => r.data),
+  getStats:        () => api.get("/dashboard/stats").then((r) => r.data),
+  getRevenueTrend: () => api.get("/revenue/trend").then((r) => r.data),
 };
 
 // ============================================================

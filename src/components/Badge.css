@@ -1,48 +1,57 @@
 /* ============================================================
-   components/Badge.css
+   Badge.css — Dark cinema status badges
    ============================================================ */
 
 .badge {
-  display: inline-block;
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
   font-size: 11px;
   font-weight: 600;
-  padding: 3px 9px;
+  padding: 3px 10px;
   border-radius: 20px;
-  letter-spacing: 0.3px;
+  letter-spacing: 0.4px;
   white-space: nowrap;
 }
 
 .badge--success {
-  background: #eaf7ee;
-  color: #217a3c;
+  background: rgba(45, 212, 191, 0.12);
+  color: #2dd4bf;
+  border: 1px solid rgba(45, 212, 191, 0.25);
 }
 
 .badge--warning {
-  background: #fff8e1;
-  color: #a0690a;
+  background: rgba(255, 209, 102, 0.12);
+  color: #ffd166;
+  border: 1px solid rgba(255, 209, 102, 0.25);
 }
 
 .badge--danger {
-  background: #fdecea;
-  color: #b71c1c;
+  background: rgba(230, 57, 70, 0.12);
+  color: #e63946;
+  border: 1px solid rgba(230, 57, 70, 0.25);
 }
 
 .badge--info {
-  background: #e3f2fd;
-  color: #1565c0;
+  background: rgba(96, 165, 250, 0.12);
+  color: #60a5fa;
+  border: 1px solid rgba(96, 165, 250, 0.25);
 }
 
 .badge--purple {
-  background: #f3e5f5;
-  color: #6a1b9a;
+  background: rgba(167, 139, 250, 0.12);
+  color: #a78bfa;
+  border: 1px solid rgba(167, 139, 250, 0.25);
 }
 
 .badge--orange {
-  background: #fff3e0;
-  color: #e65100;
+  background: rgba(251, 146, 60, 0.12);
+  color: #fb923c;
+  border: 1px solid rgba(251, 146, 60, 0.25);
 }
 
 .badge--default {
-  background: #f0f0f0;
-  color: #555;
+  background: rgba(255,255,255,0.07);
+  color: rgba(255,255,255,0.5);
+  border: 1px solid rgba(255,255,255,0.1);
 }

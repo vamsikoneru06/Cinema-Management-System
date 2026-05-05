@@ -23,9 +23,11 @@ function validate(form) {
 function StarRating({ value }) {
   const n = Math.round(Number(value) * 2) / 2;
   return (
-    <span title={`${value} / 5`}>
-      {"★".repeat(Math.floor(n))}{"☆".repeat(5 - Math.ceil(n))}{" "}
-      <small style={{ color: "#888" }}>{value}</small>
+    <span title={`${value} / 5`} style={{ color: "#ffd166", letterSpacing: 1 }}>
+      {"★".repeat(Math.floor(n))}
+      <span style={{ opacity: 0.3 }}>{"★".repeat(5 - Math.ceil(n))}</span>
+      {" "}
+      <small style={{ color: "rgba(255,255,255,0.4)", fontSize: 11 }}>{value}</small>
     </span>
   );
 }
@@ -34,7 +36,7 @@ const COLUMNS = [
   { key: "customer_name", label: "Customer", render: (v) => <strong>{v}</strong> },
   { key: "movie_title",   label: "Movie"    },
   { key: "rating",        label: "Rating",  render: (v) => <StarRating value={v} /> },
-  { key: "comment",       label: "Comment", render: (v) => <span style={{ color: "#555", fontSize: 13 }}>{v}</span> },
+  { key: "comment",       label: "Comment", render: (v) => <span style={{ color: "rgba(255,255,255,0.45)", fontSize: 13 }}>{v}</span> },
   {
     key: "created_at", label: "Date",
     render: (v) => v ? new Date(v).toLocaleDateString("en-IN") : "—",
@@ -119,8 +121,8 @@ export default function Reviews() {
       {toast && <div className={`toast toast--${toast.type}`}>{toast.msg}</div>}
       <div className="page-header">
         <h1 className="page-title">Reviews</h1>
-        <span style={{ fontSize: 14, color: "#555" }}>
-          Avg rating: <strong>⭐ {avgRating} / 5</strong>
+        <span style={{ fontSize: 14, color: "rgba(255,255,255,0.5)" }}>
+          Avg rating: <strong style={{ color: "#ffd166" }}>⭐ {avgRating} / 5</strong>
         </span>
       </div>
       {error && <div className="alert alert--error">⚠ {error}</div>}
